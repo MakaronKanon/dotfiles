@@ -1,0 +1,229 @@
+# https://i3wm.org/docs/userguide.html
+
+# Mod button is windows button
+set $mod Mod4
+
+# Font for window titles
+font pango:monospace 8
+
+# All bindings
+
+# Start a terminal
+bindsym $mod+Return exec alacritty
+
+# Kill focused window
+bindsym $mod+Shift+q kill
+
+# Change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Split in horizontal orientation
+bindsym $mod+shift+v split h
+
+# Split in vertical orientation
+bindsym $mod+v split v
+
+# Enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# Change container layout to tabbed
+bindsym $mod+w layout tabbed
+# Change container layout to split
+bindsym $mod+e layout toggle split
+
+# Go to floating for this container
+bindsym $mod+Shift+space floating toggle
+
+# Change focus from/to floating window
+bindsym $mod+space focus mode_toggle
+
+# Focus the parent container
+bindsym $mod+a focus parent
+
+# Focus the child container
+bindsym $mod+ctrl+a focus child
+
+# Switch to workspaces
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# Move workspaces to different screens
+mode "move_workspace" {
+ bindsym k move workspace to output up; mode "default";
+ bindsym j move workspace to output down; mode "default";
+ bindsym h move workspace to output left; mode "default";
+ bindsym l move workspace to output right; mode "default";
+
+ bindsym Escape mode "default"
+ bindsym Return mode "default"
+}
+bindsym $mod+o mode "move_workspace"
+
+# Different way to exit, lock, suspend, reload, restart
+mode "gettothechoppa" {
+  bindsym e exit
+  bindsym h echo "Not implemented"; mode "default";
+  bindsym s exec "systemctl suspend"; mode "default";
+  bindsym l exec "python3 ~/scripts/lock.py"; mode "default";
+  bindsym r exec reboot; mode "default";
+  bindsym Escape mode "default";
+  bindsym Return mode "default";
+}
+bindsym $mod+c mode "gettothechoppa"
+
+# Reload config, restart i3
+mode "reloading" {
+  bindsym c reload; mode "default";
+  bindsym r restart; mode "default";
+  bindsym Escape mode "default";
+  bindsym Return mode "default";
+}
+bindsym $mod+Shift+c mode "reloading";
+
+# Resize window 
+mode "resize" {
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize shrink height 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# Start brave
+bindsym $mod+g exec brave-browser
+
+# Volume buttons
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# Sreen brightness controls
+bindsym XF86AudioPrev exec light -U 10 # Increase screen brightness
+bindsym XF86AudioPlay exec light -A 10 # Decrease screen brightness
+
+# Run rofi
+bindsym $mod+d exec "rofi -show run"
+
+# Scratchpad
+bindsym $mod+apostrophe scratchpad show
+bindsym $mod+minus move scratchpad
+
+# Screenshot
+bindsym $mod+F11 exec flameshot gui
+
+# Sets current container to tabbed mode.
+bindsym $mod+t split toggle; layout tabbed;
+
+# Launch copyq clipboard manager
+bindsym $mod+ctrl+d exec copyq toggle
+
+# Copyq should launch as floating
+for_window [class="copyq"] floating enable
+# Mouse warping determines whether the mouse should wrap when changing workspace and container.
+# mouse_warping none
+
+# Focus follows mouse, means that focus is not determined by mouse position
+focus_follows_mouse no
+
+# How much gaps there should be
+gaps outer 8 
+gaps inner 8
+
+# Colors                border  bground text    indicator child_border
+client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+
+client.background       #F8F8F2
+
+
+# Border specific settings
+for_window [class=".*"] border pixel 2
+for_window [title="Multiflash"] border normal
+
+# Background image
+exec_always --no-startup-id feh --bg-fill ~/Pictures/30dec.jpg
+
+# Set keymapping, svdvorak. Caps as ctrl. Both shift toggle capslock.
+exec_always --no-startup-id setxkbmap se -variant svdvorak -option ctrl:nocaps -option shift:both_capslock
+
+# Clicking on tab means escape
+exec_always --no-startup-id xcape -e "#66=Escape"
+
+# Should not be neccessary
+exec_always --no-startup-id xmodmap ~/.Xmodmap &> temp.log
+
+# Run compton
+exec_always --no-startup-id compton
+
+# Show polybar
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+
+# Start network in system tray
+exec --no-startup-id nm-applet
+
+# Show bluetooth in system tray
+exec --no-startup-id blueman-applet
+
+# Hmm??
+#exec_always --no-startup-id xset +fp /home/marcus/.local/share/fonts
+#exec_always --no-startup-id set fp rehash
+
+# Xautolock notifies and locks screens, holding mouse in corner will stop it
+exec --no-startup-id xautolock -corners -detectsleep -time 3 -locker "python3 ~/scripts/lock.py" \
+  -notify 30 \
+  -notifier "notify-send -u critical -t 10000 -- 'locking screen in 30 seconds'"
+
+# Start redshift, set for gothenburg
+exec --no-startup-id redshift -l 57.70716:11.96679 -t 6500:2500
+
+# Clipboard manager
+exec --no-startup-id copyq
+
+# Startup scratchpad
+for_window [title="^Scratchpad$"] border 1pixel, floating enable, move scratchpad
+exec --no-startup-id alacritty -t Scratchpad -e nvim -c ":VimwikiIndex"
+
+# Store dbus session at login
+exec --no-startup-id ~/scripts/store_dbus_session.sh
+
+# Start dropbox
+exec --no-startup-id dropbox start
+
+# Set custom keymap to ~./xbk/symbols/svdvp
+exect_always --no-startup-id setxkbmap svdvp -print | xkbcomp -I$HOME/.xkb - $DISPLAY
