@@ -4,7 +4,7 @@ xkb_symbols "default" {
     name[Group1]= "Viking Dvorak (VD)";
     key <TLDE> { [ dollar,          asciitilde,         asciicircum  ] };
 
-    key <AD11> { [ apostrophe,      quotedbl   ] };
+    key <AD11> { [ quotedbl, slash             ] };
     key <AD12> { [ asterisk,        plus       ] };
 
     key <BKSL> { [ greater,         less       ] };
@@ -15,8 +15,18 @@ xkb_symbols "default" {
     key <AE04> { [ 4,               numbersign ] };
 
     key <AE07> { [ 7,               at         ] }; 
-    key <AE11> { [ slash,           backslash  ] };
+    key <AE11> { [ apostrophe,           backslash  ] };
     key <AE12> { [ grave,           acute      ] };
+
+	  key <AD01> { [ aring,      Aring,      less,           none ] };
+    key <AD02> { [ comma, semicolon, greater ] };
+
+    //key <TAB>  { [ Control_L,    Control_L ] };
+    //key <CAPS> { [ Escape,          Escape ] };
+
+
+
+    
 
     //key <AE01> { [ 1, braceleft ] };
     //key <AE02> { [ 2, bracketleft, currency ], type[Group1] = "FOUR_LEVEL_ALPHABETIC" };

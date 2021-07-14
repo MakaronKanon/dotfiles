@@ -138,7 +138,7 @@ bindsym XF86AudioPlay exec light -A 10 # Decrease screen brightness
 bindsym $mod+d exec "rofi -show run"
 
 # Scratchpad
-bindsym $mod+apostrophe scratchpad show
+bindsym $mod+quotedbl scratchpad show
 bindsym $mod+minus move scratchpad
 
 # Screenshot
@@ -180,9 +180,11 @@ for_window [title="Multiflash"] border normal
 exec_always --no-startup-id feh --bg-fill ~/Pictures/30dec.jpg
 
 # Set keymapping, svdvorak. Caps as ctrl. Both shift toggle capslock.
-exec_always --no-startup-id setxkbmap se -variant svdvorak -option ctrl:nocaps -option shift:both_capslock
+#exec_always --no-startup-id setxkbmap se -variant svdvorak -option ctrl:nocaps -option shift:both_capslock
 
+exec_always --no-startup-id setxkbmap -I ~/.xkb vikingdvorak -option ctrl:nocaps -option shift:both_capslock -print | xkbcomp -I$HOME/.xkb - $DISPLAY
 # Clicking on tab means escape
+exec_always --no-startup-id pkill xcape
 exec_always --no-startup-id xcape -e "#66=Escape"
 
 # Should not be neccessary
@@ -224,6 +226,3 @@ exec --no-startup-id ~/scripts/store_dbus_session.sh
 
 # Start dropbox
 exec --no-startup-id dropbox start
-
-# Set custom keymap to ~./xbk/symbols/svdvp
-exect_always --no-startup-id setxkbmap svdvp -print | xkbcomp -I$HOME/.xkb - $DISPLAY
