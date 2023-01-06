@@ -1,0 +1,48 @@
+default partial alphanumeric_keys
+xkb_symbols "default" {
+    include "se(svdvorak)"
+    name[Group1]= "Viking Dvorak (VD)";
+    key <TLDE> { [ dollar,          asciitilde,         asciicircum  ] };
+
+    key <AD11> { [ quotedbl, slash             ] };
+    key <AD12> { [ plus,        asterisk] };
+
+    key <BKSL> { [ greater,         less       ] };
+
+    key <AE01> { [ 1,               exclam,              question   ]	};
+    key <AE02> { [ 2,               bracketleft,         braceleft  ]	};
+    key <AE03> { [ 3,               bracketright,        braceright ]	};
+    key <AE04> { [ 4,               numbersign ] };
+
+    key <AE07> { [ 7,               at         ] }; 
+    key <AE11> { [ apostrophe,           backslash  ] };
+    key <AE12> { [ grave,           acute      ] };
+
+	  key <AD01> { [ aring,      Aring,      less,           none ] };
+    key <AD02> { [ comma, semicolon, greater ] };
+
+    //key <TAB>  { [ Control_L,    Control_L ] };
+    //key <CAPS> { [ Escape,          Escape ] };
+
+
+
+    
+
+    //key <AE01> { [ 1, braceleft ] };
+    //key <AE02> { [ 2, bracketleft, currency ], type[Group1] = "FOUR_LEVEL_ALPHABETIC" };
+    //key <AE03> { [ 3, parenleft, cent ], type[Group1] = "FOUR_LEVEL_ALPHABETIC" };
+    //key <AE04> { [ 4, parenright, yen ], type[Group1] = "FOUR_LEVEL_ALPHABETIC" };
+    //key <AE05> { [ 5, bracketright, EuroSign ], type[Group1] = "FOUR_LEVEL_ALPHABETIC" };
+    //key <AE06> { [ 6, braceright, sterling ], type[Group1] = "FOUR_LEVEL_ALPHABETIC" };
+    //key <AE07> { [ 7, asterisk ], type[Group1] = "FOUR_LEVEL_ALPHABETIC" };
+    //key <AE08> { [ 8, plus ], type[Group1] = "FOUR_LEVEL_ALPHABETIC" };
+    //key <AE09> { [ 9, equal ], type[Group1] = "FOUR_LEVEL_ALPHABETIC" };
+    //key <AE10> { [ 0, ampersand ], type[Group1] = "FOUR_LEVEL_ALPHABETIC" };
+    //key <AE11> { [ exclam, percent, exclamdown, U2E18 ], type[Group1] = "FOUR_LEVEL_ALPHABETIC" };
+	  //  
+//
+//    key <AC02> { [ o, O, adiaeresis, Adiaeresis ] };
+//    key <AC03> { [ e, E, odiaeresis, Odiaeresis ] };
+
+//    key <AB01> { [ quotedbl, apostrophe, dead_acute ] };
+};
