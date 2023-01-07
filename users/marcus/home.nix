@@ -40,6 +40,8 @@
     zoxide
     polybar
     rofi
+    postman
+    awscli2
 
     rnix-lsp
     gopls

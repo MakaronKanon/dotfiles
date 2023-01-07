@@ -44,7 +44,7 @@
   users.users.marcus = {
     isNormalUser = true;
     description = "Marcus";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [];
   };
 
@@ -71,6 +71,15 @@
      pavucontrol
   #  wget
   ];
+
+  virtualisation.docker = {
+    enable = true;
+
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
+  };
 
 
   # Some programs need SUID wrappers, can be configured further or are
