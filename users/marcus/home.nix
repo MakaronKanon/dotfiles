@@ -45,6 +45,8 @@
 
     rnix-lsp
     gopls
+
+    vscode
   ];
 
   programs.neovim = {
